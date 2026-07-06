@@ -8,15 +8,15 @@ const config = ({
   testDir: './tests',
      timeout: 40 *1000, 
      expect: {
-      timeout: 30000
+      timeout: 5000
      },
 
- //reporter: 'html', 
+ reporter: 'html', 
 
 
   use: {
     browserName: 'firefox',
-    headless: false,
+    headless: true,
   },
 });
 module.exports = config

@@ -25,7 +25,7 @@ test('Browser Context Playwright test',async ({browser})=> {
 });  
 
 //those two steps can be avoided if you include page on the fixture
-test.only('Page Playwright test',async ({page})=> {
+test('Page Playwright test',async ({page})=> {
     //Automation flow 
     const username = page.locator('#username');
     const password = page.locator('#password');
@@ -44,4 +44,31 @@ test.only('Page Playwright test',async ({page})=> {
     //find elements in a array and get the first element and get the text content
     console.log(await page.locator('.card-body a').first().textContent());
     console.log(await page.locator('.card-body a').nth(1).textContent());
+});  
+
+
+test('List all contents',async ({page})=> {
+    //Automation flow 
+    const username = page.locator('#username');
+    const password = page.locator('#password');
+    const signInBtn = page.locator('#signInBtn');
+    const cardTitles = page.locator('.card-body a');
+
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise"); 
+    console.log(await page.title());
+    await username.fill("");
+    await username.fill('rahulshettyacademy');
+    await password.fill('Learning@830$3mK2');
+    await signInBtn.click();
+
+
+    await page.locator('.card-body a');
+    //find elements in a array and get the first element and get the text content
+    // console.log(await cardTitles.first().textContent());
+    // console.log(await cardTitles.nth(1).textContent());
+
+    const cardTextContents = await cardTitles.allTextContents();
+
+    console.log(cardTextContents);
+
 });  
