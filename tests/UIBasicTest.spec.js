@@ -72,3 +72,40 @@ test('List all contents',async ({page})=> {
     console.log(cardTextContents);
 
 });  
+
+test.only('UI Controls',async ({page})=> {
+    
+    const username = page.locator('#username');
+    const password = page.locator('#password');
+    const signInBtn = page.locator('#signInBtn');
+    const cardTitles = page.locator('.card-body a');
+
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise"); 
+    console.log(await page.title());
+    await username.fill("");
+    await username.fill('rahulshettyacademy');
+    await password.fill('Learning@830$3mK2');
+    await signInBtn.click();
+
+    //static selection
+    const dropdown = page.locator("select.form-control"); 
+    await dropdown.selectOption("consult"); 
+   // await page.pause(); 
+
+   await page.locator(".radiotextsty").last().click(); 
+    await page.locator("#okayBtn").click(); 
+
+    //assertion to check if the radio button is checked 
+    console.log(await page.locator(".radiotextsty").last().isChecked());
+    await expect(page.locator(".radiotextsty").last()).toBeChecked(); 
+
+    //checkbox selection
+    await page.locator("#terms").click(); 
+    await expect(page.locator("#terms")).toBeChecked();
+
+    //assertion to check if the checkbox is unchecked
+    await page.locator("#terms").uncheck(); 
+    await expect(page.locator("#terms")).not.toBeChecked();
+
+
+});  

@@ -32,7 +32,7 @@ await page.goto("https://rahulshettyacademy.com/client/auth/login");
 }); 
 
 
-test.only("Login and Select Addidas label",async ({page})=> {
+test("Login and Select Addidas label",async ({page})=> {
 
 await page.goto("https://rahulshettyacademy.com/client/auth/login");
 
@@ -43,6 +43,11 @@ const loginBtn = page.locator("#login");
  await password.fill("Password234"); 
  await username.fill("jackson.miller@example.com"); 
 await loginBtn.click();
+
+//await page.waitForLoadState("networkidle");
+await page.locator(".card-body b").first().waitFor(); 
+const titles = await page.locator(".card-body b").allTextContents();
+console.log(titles);
 
 
 const addidasLabel = page.locator(".card-body h5");
