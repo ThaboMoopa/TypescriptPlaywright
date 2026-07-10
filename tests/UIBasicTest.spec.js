@@ -107,5 +107,38 @@ test.only('UI Controls',async ({page})=> {
     await page.locator("#terms").uncheck(); 
     await expect(page.locator("#terms")).not.toBeChecked();
 
+    //blinking text assertion 
+    const blinkingText = page.locator('[href*="documents-request"]'); 
+    await expect(blinkingText).toHaveAttribute("class","blinkingText");  
+
+    //child window handling
 
 });  
+
+//handling multiple pages on the same browser
+test.only("Child window handling", async ({browser})=>{
+    const context = await browser.newContext(); 
+    const page = await context.newPage(); 
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise");
+    const documentLink = page.locator("[href*='documents-request']");
+    
+
+    const [newPage] = await Promise.all([
+        context.waitForEvent('page'), 
+        documentLink.click() ]); 
+
+    const text = await  newPage.locator(".red").textContent(); 
+
+    const arrayText = text.split("@"); 
+    const email = arrayText[1].split(" ")[0];
+
+    //navigate back to the parent page and fill the email address
+    const username = page.locator("#username");
+    await username.fill(email);
+    console.log(email); 
+
+
+    
+
+
+}); 
