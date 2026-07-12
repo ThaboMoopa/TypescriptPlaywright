@@ -4,19 +4,29 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-const config = ({
-  testDir: './tests',
-     timeout: 40 *1000, 
-     expect: {
-      timeout: 5000
-     },
-
- //reporter: 'html', 
-
-
-  use: {
-    browserName: 'firefox',
-    headless: true,
+export default defineConfig({
+  projects: [
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+   
+    /* Remove or comment out this section:
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    */
+  ],
+  expect:{
+    timeout: 60 * 1000, 
   },
+  use:{
+    headless: false,
+  }
+  
 });
-module.exports = config

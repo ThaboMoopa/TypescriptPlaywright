@@ -73,7 +73,7 @@ test('List all contents',async ({page})=> {
 
 });  
 
-test.only('UI Controls',async ({page})=> {
+test('UI Controls',async ({page})=> {
     
     const username = page.locator('#username');
     const password = page.locator('#password');
@@ -116,7 +116,7 @@ test.only('UI Controls',async ({page})=> {
 });  
 
 //handling multiple pages on the same browser
-test.only("Child window handling", async ({browser})=>{
+test("Child window handling", async ({browser})=>{
     const context = await browser.newContext(); 
     const page = await context.newPage(); 
     await page.goto("https://rahulshettyacademy.com/loginpagePractise");
@@ -135,10 +135,9 @@ test.only("Child window handling", async ({browser})=>{
     //navigate back to the parent page and fill the email address
     const username = page.locator("#username");
     await username.fill(email);
-    console.log(email); 
-
-
     
 
 
+    //handling values at runtime
+    console.log(await username.inputValue()); 
 }); 
