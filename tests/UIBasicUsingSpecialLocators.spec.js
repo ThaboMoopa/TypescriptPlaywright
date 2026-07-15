@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
  
 
-test.only("Rewrite end to end using special locators", async({page})=>{
+test("Rewrite end to end using special locators", async({page})=>{
     
     await page.goto("https://rahulshettyacademy.com/client/auth/login");
 

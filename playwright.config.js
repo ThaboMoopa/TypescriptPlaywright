@@ -25,8 +25,11 @@ export default defineConfig({
   expect:{
     timeout: 60 * 1000, 
   },
+  reporter: 'html',
   use:{
-    headless: false,
+    headless: true,
+    screenshot: 'on',
+    trace: 'retain-on-failure'
   }
   
 });
