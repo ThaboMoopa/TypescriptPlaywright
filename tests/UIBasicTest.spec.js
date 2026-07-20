@@ -1,6 +1,6 @@
 const {test,expect} = require ('@playwright/test'); 
 
-test.only('Browser Context Playwright test',async ({browser})=> {
+test('Browser Context Playwright test',async ({browser})=> {
     //Automation flow 
 
      
@@ -25,7 +25,7 @@ test.only('Browser Context Playwright test',async ({browser})=> {
 });  
 
 //those two steps can be avoided if you include page on the fixture
-test.only('Page Playwright test',async ({page})=> {
+test('Page Playwright test',async ({page})=> {
     //Automation flow 
     const username = page.locator('#username');
     const password = page.locator('#password');
@@ -47,7 +47,7 @@ test.only('Page Playwright test',async ({page})=> {
 });  
 
 
-test.only('List all contents',async ({page})=> {
+test('List all contents',async ({page})=> {
     //Automation flow 
     const username = page.locator('#username');
     const password = page.locator('#password');
@@ -73,7 +73,7 @@ test.only('List all contents',async ({page})=> {
 
 });  
 
-test.only('UI Controls',async ({page})=> {
+test('UI Controls',async ({page})=> {
     
     const username = page.locator('#username');
     const password = page.locator('#password');
