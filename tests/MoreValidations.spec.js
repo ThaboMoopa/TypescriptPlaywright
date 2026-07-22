@@ -1,6 +1,6 @@
 const {test,expect} = require('@playwright/test'); 
 
-test.only("More validations", async({page})=>{
+test("More validations", async({page})=>{
 
 await page.goto("https://rahulshettyacademy.com/AutomationPractice");
 await expect(page.locator("#displayed-text")).toBeVisible(); 
